@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="データをphpに送信する" content="web開発7回目" />
+    <title>File Upload Form</title>
+</head>
+<body>
+    <?php if (isset($_GET['photo'])): ?>
+        <div>
+            <h2>Uploaded Photo</h2>
+            <img src="<?php echo htmlspecialchars($_GET['photo']); ?>" alt="Uploaded Photo" style="max-width: 300px;">
+            <p>Photo Name: <?php echo htmlspecialchars($_GET['photo_name']); ?></p>
+            <p>Photo Type: <?php echo htmlspecialchars($_GET['photo_type']); ?></p>
+            <p>Photo Size: <?php echo htmlspecialchars($_GET['photo_size']); ?> bytes</p>
+            <p>Photo Directory: <?php echo htmlspecialchars($_GET['photo_dir']); ?></p>
+        </div>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['file'])): ?>
+        <div>
+            <h2>Uploaded File</h2>
+            <p>File Name: <?php echo htmlspecialchars($_GET['file_name']); ?></p>
+            <p>File Type: <?php echo htmlspecialchars($_GET['file_type']); ?></p>
+            <p>File Size: <?php echo htmlspecialchars($_GET['file_size']); ?> bytes</p>
+            <p>File Directory: <?php echo htmlspecialchars($_GET['file_dir']); ?></p>
+        </div>
+    <?php endif; ?>
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="photo">Upload Photo:</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file" required><br><br>
+
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

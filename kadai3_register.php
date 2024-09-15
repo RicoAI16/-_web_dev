@@ -24,6 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         echo "User registered successfully.";
 
+        // Redirect to login page after registration
+        header('Location: kadai3_login_form.php');
+        exit();
+
     } catch (PDOException $e) {
         echo "Database connection failed: " . $e->getMessage();
     }
